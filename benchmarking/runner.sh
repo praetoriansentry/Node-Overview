@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #Small script to benchmark node and apache
 
 sudo service apache2 restart
