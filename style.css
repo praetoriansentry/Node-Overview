@@ -45,9 +45,14 @@ input {
     -o-box-orient: vertical;
     box-orient: vertical;
 }
-
+.chatfont {
+    font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+    font-size: 16px;
+}
 .conversation {
     width: 100%;
+    padding-bottom: 1em;
+    overflow: scroll;
 
     -webkit-box-flex: 1;
     -moz-box-flex: 1;
