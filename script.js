@@ -4,9 +4,19 @@ var com;
 if (!com) {
     com = {};
 }
+(function () {
+    "use strict";
+
+    function Poller() {
+    }
+    var p = Poller.prototype;
+
+    com.Poller = Poller;
+}());
 
 (function () {
     "use strict";
+
     function Manager() {
         this.init();
         this.username = 'asdf';
@@ -98,6 +108,7 @@ if (!com) {
     };
 
     com.Manager = Manager;
+
 }());
 
 /*Kick everything off*/
