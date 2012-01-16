@@ -33,6 +33,8 @@ if (!com) {
         }
 
         this.username = uname;
+        $('.logininfo').addClass('hidden');
+        $('.chat').removeClass('hidden');
     };
 
     com.Manager = Manager;
