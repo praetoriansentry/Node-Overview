@@ -18,9 +18,8 @@ input {
 }
 
 .logininfo {
-    width: 275px;
-    margin: 275px auto 0 auto;
     text-align: center;
+    height: 100%;
 }
 
 .logininfo input {
@@ -32,7 +31,9 @@ input {
 }
 .chat {
     height: 100%;
+}
 
+.flexbox {
     display: -webkit-box;
     display: -moz-box;
     display: -ms-box;
@@ -45,6 +46,15 @@ input {
     -o-box-orient: vertical;
     box-orient: vertical;
 }
+
+.vcenter {
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-box-pack: center;
+    -o-box-pack: center;
+    box-pack: center;
+}
+
 .chatfont {
     font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
     font-size: 16px;
