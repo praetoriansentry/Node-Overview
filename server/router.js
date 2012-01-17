@@ -1,18 +1,33 @@
-var com;
+var com,
+    msg = require('messagemanager');
 if (!com) {
     com = {};
 }
 
+(function () {
+    "use strict";
+    var routes = {
+        GET: {},
+        POST: {},
+        PUT: {},
+        DELETE:{}
+    };
+
+    routes.GET.message = function (request, response) {
+        var m = new msg.MessageManager();
+        m.insertMessage('hello, world', 'john', function () {
+            response.writeHead(200, {'Content-Type': 'text/plain'});
+            response.end('Get Message');
+        });
+    };
+
+    com.routes = routes;
+}());
 
 (function () {
     "use strict";
 
-    var routes = {
-            GET: {},
-            POST: {},
-            PUT: {},
-            DELETE:{} 
-        },
+    var routes = com.routes,
         r;
 
     function Router(request, response) {
@@ -38,6 +53,7 @@ if (!com) {
             folders = pieces.pathname.split('/');
         folders.pop();
         folders.shift();
+
         if (pieces.href === '/') {
             return this.showRoot();
         }
@@ -45,7 +61,6 @@ if (!com) {
         if (folders.length === 0) {
             return this.sendNotFound();
         }
-
         if (typeof routes[verb] === 'undefined' || typeof routes[verb][folders[0]] === 'undefined') {
             return this.sendNotFound();
         }
