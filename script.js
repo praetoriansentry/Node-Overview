@@ -147,6 +147,7 @@ if (!com) {
     };
 
     m.encode = function (msg) {
+        // don't do anything if its undefined.
         return $('<div/>').text(msg).html();
     };
 
@@ -155,6 +156,7 @@ if (!com) {
             that = this;
         $.ajax({
             url : 'http://' + host + ':8000/message/',
+            dataType: 'json',
             success: function (data) {
                 var i = data.length;
                 while (i > 0) {
