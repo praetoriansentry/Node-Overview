@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<!--
+Google HTML5 slide template
+
+Authors: Luke Mahé (code)
+Marcin Wichary (code and design)
+
+Dominic Mazzoni (browser compatibility)
+Charles Chen (ChromeVox support)
+
+URL: http://code.google.com/p/html5slides/
+-->
+<html>
+    <head>
+        <title>Scaling with Node.js</title>
+        <meta charset='utf-8'>
+        <script src='http://html5slides.googlecode.com/svn/trunk/slides.js'></script>
+        <style>
+            #nxjdeck.slides.template-default > article:not(.nobackground):not(.biglogo) {
+                background: url(nxjlogo.png) 710px 625px no-repeat;
+                background-color: white;
+            }
+            dt {
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body style='display: none'>
+        <section id='nxjdeck' class='slides layout-regular template-default'>
+        <!-- Your slides (<article>s) go here. Delete or comment out the
+        slides below. -->
+
+        <article>
+        <h1>
+            Scaling with Node.js
+            <br>
+            and Socket.io
+        </h1>
+        <p>
+        John Hilliard
+        <br>
+        January 18, 2012
+        </p>
+        </article>
+
+        <article>
+        <h3> Agenda </h3>
+        <ul>
+            <li>
+            foo
+            </li>
+            <li>
+            bar
+            </li>
+            <li>
+            baz
+            </li>
+        </ul>
+        <p>
+        hi
+        </p>
+        </article>
+
+        <article>
+        <h3> Client-Server Communication </h3>
+        <p>
+        The way that browsers send information to server has changed over time
+        </p>
+        <ul>
+            <li>Form POST</li>
+            <li>Ajax</li>
+            <li>WebSocket</li>
+        </ul>
+        </article>
+
+        <article>
+        <h3> Form POSTING </h3>
+
+        <pre>
+example code
+        </pre>
+
+        <p>
+        pros/cons
+        </p>
+        </article>
+
+        <article>
+        <h3> Ajax </h3>
+
+        <pre>
+example code... jquery
+        </pre>
+
+        <p>
+        pros/cons... no need to reload the page, feels native in certain cases... or atlest allows us to get close
+        </p>
+        </article>
+
+
+        <article>
+        <h3> Sometimes Ajax isn't fast enough </h3>
+
+        <p>
+        how do we make applications that update in real time
+        </p>
+        <ul>
+            <li>metrics/stocks</li>
+            <li>games</li>
+            <li>chat</li>
+            <li>server push</li>
+        </ul>
+        </article>
+
+        <article>
+        <h3> Transport Techniques </h3>
+
+        <p>
+        Many techniques exist that simulate the behavior of server push communication
+        </p>
+        <ul>
+            <li>Polling</li>
+            <li>Long Polling</li>
+            <li>Forever Frame</li>
+            <li>XHR Streaming</li>
+        </ul>
+        <p>
+        It gets complicated...
+        </p>
+        </article>
+
+        <article>
+        <h3> Polling </h3>
+
+        <p>
+        What is polling?
+        pros/cons
+        </p>
+        </article>
+
+        <article>
+        <h3> Long Polling </h3>
+
+        <p>
+        What is polling?
+        pros/cons
+        </p>
+
+        </article>
+
+        <article>
+        <h3> Enter Node.js and Socket.io </h3>
+
+        <dl>
+            <dt>Socket.io</dt>
+            <dd>Nice definition</dd>
+            <dt>Node.js</dt>
+            <dd>Nice Definition</dd>
+        </dl>
+        </article>
+
+        <article>
+        <h3> Socket.io </h3>
+
+        <p>
+        Full description
+        </p>
+
+        </article>
+
+        <article>
+        <h3> Node.js </h3>
+
+        <p>
+        Full description
+        </p>
+
+        </article>
+
+        <article>
+        <h3> Node.js - Why Scalability Matters </h3>
+
+        <p>
+        Show benchmarks
+        </p>
+
+        </article>
+
+        <article>
+        <h3> Node.js - How is node js scalable </h3>
+
+        <p>
+        not process thread based/ event based -  less over head
+        <br>
+        not asynchronous i/o
+        </p>
+
+        </article>
+
+        <article>
+        <h3> Chat Demo </h3>
+
+        <p>
+        screen shot
+        </p>
+
+        </article>
+
+        <article>
+        <h3> Final Thoughts</h3>
+
+        <p>
+        stuff.
+        </p>
+
+        </article>
+
+        </section>
+
+    </body>
+</html>
