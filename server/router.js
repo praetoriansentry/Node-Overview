@@ -17,7 +17,7 @@ if (!com) {
     routes.GET.message = function (request, response) {
         var m = new msg.MessageManager();
         m.getLastMessages(function (err, docs) {
-            response.writeHead(200, {'Content-Type': 'text/plain'});
+            response.writeHead(200, {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'});
             response.end(JSON.stringify(docs));
         });
     };
