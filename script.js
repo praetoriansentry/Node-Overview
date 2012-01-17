@@ -16,10 +16,41 @@ if (!com) {
 
 (function () {
     "use strict";
+    function Socket(username) {
+        this.username = username;
+        this.connect();
+        this.listen();
+    }
+    var s = Socket.prototype;
+
+    s.connect = function () {
+        var host = window.location.host,
+            socket = io.connect('http://' + host + ':8000');
+
+        socket.emit('newuser', {username: this.username});
+        this.socket = socket;
+    };
+
+    s.listen = function () {
+        this.socket.on('recvmsg', function (data) {
+            $.publish('/recvmsg', [data]);
+        });
+    };
+
+    s.send = function (msg) {
+        this.socket.emit('sendmsg', msg);
+    };
+
+    com.Socket = Socket;
+}());
+
+(function () {
+    "use strict";
 
     function Manager() {
         this.init();
         this.username = 'asdf';
+        this.socket;
     }
 
     var m = Manager.prototype;
@@ -46,21 +77,37 @@ if (!com) {
     };
 
     m.setUserName = function () {
-        var uname = $('#username').val().trim();
+        var uname = $('#username').val().trim(),
+            that = this;
         if (uname === '') {
             // need to have a user name that isn't blank
             return;
         }
 
         this.username = uname;
+
+        this.socket = new com.Socket(this.username);
+        $.subscribe('/recvmsg', function (msg) {
+            that.recvMsg.call(that, msg);
+        });
+
         $('.logininfo').addClass('hidden');
         $('.chat').removeClass('hidden');
         $('.chat textarea').focus();
     };
 
     m.sendMessage = function () {
-        var msg = this.clearTextArea(),
-            msgLine = this.createMsgLine(this.username, new Date(), msg);
+        var msg = this.clearTextArea();
+        this.pushMessage(this.username, msg);
+        this.socket.send({message: msg, username: this.username});
+    };
+
+    m.recvMsg = function (data) {
+        this.pushMessage(data.username, data.message);
+    };
+
+    m.pushMessage = function (username, msg) {
+        var msgLine = this.createMsgLine(username, new Date(), msg);
         $(msgLine).appendTo('.conversation');
         this.scrollDown();
     };

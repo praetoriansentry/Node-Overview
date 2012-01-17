@@ -12,8 +12,7 @@ function httpHandler(req, res) {
 app.listen(8000, "0.0.0.0");
 
 io.sockets.on('connection', function (socket) {
-    socket.emit('news', { hello: 'world' });
-    socket.on('my other event', function (data) {
-        console.log(data);
+    socket.on('sendmsg', function (data) {
+        socket.broadcast.emit('recvmsg', data);
     });
 });

@@ -4,6 +4,8 @@
         <title>Test Page</title>
         <link rel="stylesheet" type="text/css" href="style.css" />
         <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script>
+        <script src="pubsub.js"></script>
+        <script src="socket.io/socket.io.js"></script>
         <script type='text/javascript' src='script.js'></script>
     </head>
     <body>
@@ -20,13 +22,5 @@
             </div>
             <textarea class='chatfont'></textarea>
         </div>
-        <script src="socket.io/socket.io.js"></script>
-        <script>
-            var socket = io.connect('http://10.0.1.16:8000');
-            socket.on('news', function (data) {
-                console.log(data);
-                socket.emit('my other event', { my: 'data' });
-            });
-        </script>
     </body>
 </html>
