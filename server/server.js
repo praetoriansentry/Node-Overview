@@ -13,6 +13,9 @@ app.listen(8000, "0.0.0.0");
 
 io.sockets.on('connection', function (socket) {
     socket.on('sendmsg', function (data) {
+        var MessageManager  = new require('messagemanager').MessageManager,
+            mm = new MessageManager();
         socket.broadcast.emit('recvmsg', data);
+        mm.insertMessage(data.message, data.username, function () {});
     });
 });
