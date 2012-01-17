@@ -82,6 +82,8 @@ if (!com) {
             that.recvMsg.call(that, msg);
         });
 
+        this.fetchLastMessages();
+
         $('.logininfo').addClass('hidden');
         $('.chat').removeClass('hidden');
         $('.chat textarea').focus();
@@ -97,8 +99,11 @@ if (!com) {
         this.pushMessage(data.username, data.message);
     };
 
-    m.pushMessage = function (username, msg) {
-        var msgLine = this.createMsgLine(username, new Date(), msg);
+    m.pushMessage = function (username, msg, date) {
+        if (!date) {
+            date = new Date();
+        }
+        var msgLine = this.createMsgLine(username, date, msg);
         $(msgLine).appendTo('.conversation');
         this.scrollDown();
     };
@@ -143,6 +148,21 @@ if (!com) {
 
     m.encode = function (msg) {
         return $('<div/>').text(msg).html();
+    };
+
+    m.fetchLastMessages = function () {
+        var host = window.location.host,
+            that = this;
+        $.ajax({
+            url : 'http://' + host + ':8000/message/',
+            success: function (data) {
+                var len = data.length,
+                    i = len;
+                while (i--) {
+                    that.pushMessage(data[i].username, data[i].text, new Date(data[i].time));
+                }
+            }
+        });
     };
 
     com.Manager = Manager;
