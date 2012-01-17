@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>foo</title>
+        <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script>
+    </head>
+    <body>
+        <div id='ajaxform'>
+            <input name='val1' type='text'>
+            <button id='submitbtn'>Submit</button>
+        </div>
+        <script>
+        $('#ajaxform button').click(function (evt) {
+            var val1 = $('#ajaxform [name=val1]').val(),
+                val2 = 123;
+            $.ajax({
+                url: '/page.php',
+                type: 'POST',
+                data: { val1: val1, val2: val2},
+                success: function (data) {
+                    // do something
+                }
+            });
+        });
+        </script>
+    </body>
+</html>

@@ -24,6 +24,9 @@ URL: http://code.google.com/p/html5slides/
             dt {
                 font-weight: bold;
             }
+            a {
+                text-decoration: none;
+            }
         </style>
     </head>
     <body style='display: none'>
@@ -38,27 +41,44 @@ URL: http://code.google.com/p/html5slides/
             and Socket.io
         </h1>
         <p>
-        John Hilliard
+        <a href='http://jfh.me'>John Hilliard</a> - <a href='http://twitter.com/praetorian/'>@praetorian</a>
+        <br>
+        <a href='https://github.com/praetoriansentry'>github</a>
+        <br>
+        <a href='http://www.nextjump.com'>Next Jump</a>
         <br>
         January 18, 2012
         </p>
         </article>
 
         <article>
+        <h2> About Me </h2>
+        <ul class='build'>
+            <li> MIT '09 </li>
+            <li> 6-3 </li>
+            <li> Doing web development since 2007 </li>
+            <li> Favorite Language: JavaScript </li>
+        </ul>
+        </article>
+
+        <article>
         <h3> Agenda </h3>
         <ul>
             <li>
-            foo
+            Client-Sever Communcation
             </li>
             <li>
-            bar
+            Ajax Techniques
             </li>
             <li>
-            baz
+            Node.js and Socket
+            </li>
+            <li>
+            Demo / Code Walk Through
             </li>
         </ul>
         <p>
-        hi
+            Follow along at <a href='http://jfh.me/470'>http://jfh.me/470</a>
         </p>
         </article>
 
@@ -78,7 +98,11 @@ URL: http://code.google.com/p/html5slides/
         <h3> Form POSTING </h3>
 
         <pre>
-example code
+&lt;form method=&#39;POST&#39; action=&#39;page.php&#39;&gt;
+    &lt;input name=&#39;val1&#39; type=&#39;text&#39;&gt;
+    &lt;input name=&#39;val2&#39; type=&#39;hidden&#39; value=&#39;123&#39;&gt;
+    &lt;input type=&#39;submit&#39;&gt;
+&lt;/form&gt;
         </pre>
 
         <p>
@@ -90,12 +114,33 @@ example code
         <h3> Ajax </h3>
 
         <pre>
-example code... jquery
-        </pre>
+&lt;div id=&#39;ajaxform&#39;&gt;
+    &lt;input name=&#39;val1&#39; type=&#39;text&#39;&gt;
+    &lt;button id=&#39;submitbtn&#39;&gt;Submit&lt;/button&gt;
+&lt;/div&gt;
+&lt;script&gt;
+$(&#39;#ajaxform button&#39;).click(function (evt) {
+    var val1 = $(&#39;#ajaxform [name=val1]&#39;).val(),
+        val2 = 123;
+    $.ajax({
+        url: &#39;/page.php&#39;,
+        type: &#39;POST&#39;,
+        data: { val1: val1, val2: val2},
+        success: function (data) {
+            // do something
+        }
+    });
+});
+&lt;/script&gt;</pre>
+        </article>
+
+        <article>
+        <h3> Ajax </h3>
 
         <p>
-        pros/cons... no need to reload the page, feels native in certain cases... or atlest allows us to get close
+        Pros/cons
         </p>
+
         </article>
 
 
@@ -179,6 +224,19 @@ example code... jquery
         </article>
 
         <article>
+        <h3> Node.js - Hello World </h3>
+
+        <pre>
+var http = require('http');
+
+http.createServer(function (request, response) {
+    response.writeHead(200, {'Content-Type': 'text/plain'});
+    response.end('Hello World\n');
+}).listen(1337, "127.0.0.1"); </pre>
+
+        </article>
+
+        <article>
         <h3> Node.js - Why Scalability Matters </h3>
 
         <p>
@@ -188,7 +246,7 @@ example code... jquery
         </article>
 
         <article>
-        <h3> Node.js - How is node js scalable </h3>
+        <h3> Node.js - How is Node.js scalable </h3>
 
         <p>
         not process thread based/ event based -  less over head
