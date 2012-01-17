@@ -18,7 +18,7 @@ URL: http://code.google.com/p/html5slides/
         <script src='http://html5slides.googlecode.com/svn/trunk/slides.js'></script>
         <style>
             #nxjdeck.slides.template-default > article:not(.nobackground):not(.biglogo) {
-                background: url(nxjlogo.png) 710px 625px no-repeat;
+                background: url(http://s3.amazonaws.com/praetoriansentry/jfhme/nxjlogo.png) 710px 625px no-repeat;
                 background-color: white;
             }
             dt {
@@ -85,12 +85,12 @@ URL: http://code.google.com/p/html5slides/
         <article>
         <h3> Client-Server Communication </h3>
         <p>
-        The way that browsers send information to server has changed over time
+        The way browsers communicate with the server has evolved over time:
         </p>
         <ul>
             <li>Form POST</li>
-            <li>Ajax</li>
-            <li>WebSocket</li>
+            <li>XHR</li>
+            <li>WebSocket / XHR Streaming</li>
         </ul>
         </article>
 
@@ -102,12 +102,20 @@ URL: http://code.google.com/p/html5slides/
     &lt;input name=&#39;val1&#39; type=&#39;text&#39;&gt;
     &lt;input name=&#39;val2&#39; type=&#39;hidden&#39; value=&#39;123&#39;&gt;
     &lt;input type=&#39;submit&#39;&gt;
-&lt;/form&gt;
-        </pre>
+&lt;/form&gt;</pre>
+        <ul>
+            <li><b>Pros</b></li>
+            <ul>
+                <li>Completely HTML based. No JavaScript Required</li>
+                <li>Dead Simple</li>
+            </ul>
+            <li><b>Cons</b></li>
+            <ul>
+                <li>Page Refreshes - Jumpy UX</li>
+                <li>Feels much slower</li>
+            </ul>
+        </ul>
 
-        <p>
-        pros/cons
-        </p>
         </article>
 
         <article>
