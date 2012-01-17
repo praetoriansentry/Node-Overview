@@ -1,3 +1,4 @@
+/*jslint node: true, maxerr: 50, indent: 4 */
 var mongo = require('mongodb'),
     com;
 if (!com) {
@@ -26,7 +27,7 @@ if (!com) {
                 throw error;
             }
             var messages = new mongo.Collection(client, 'messages');
-            messages.find({}).sort({time: -1}).limit(10).toArray(callback);;
+            messages.find({}).sort({time: -1}).limit(10).toArray(callback);
         });
     };
 

@@ -1,3 +1,4 @@
+/*jslint node: true, maxerr: 50, indent: 4, unparam: true*/
 var com,
     msg = require('messagemanager');
 if (!com) {
@@ -10,7 +11,7 @@ if (!com) {
         GET: {},
         POST: {},
         PUT: {},
-        DELETE:{}
+        DELETE: {}
     };
 
     // curl -v  -X GET "http://10.0.1.16:8000/message/"

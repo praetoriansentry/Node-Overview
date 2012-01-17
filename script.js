@@ -1,4 +1,4 @@
-/*global $: false*/
+/*global $: false, io: false*/
 /*jslint browser: true, maxerr: 50, indent: 4 */
 var com;
 if (!com) {
@@ -41,7 +41,7 @@ if (!com) {
     function Manager() {
         this.init();
         this.username = 'asdf';
-        this.socket;
+        this.socket =  null;
     }
 
     var m = Manager.prototype;
@@ -156,9 +156,9 @@ if (!com) {
         $.ajax({
             url : 'http://' + host + ':8000/message/',
             success: function (data) {
-                var len = data.length,
-                    i = len;
-                while (i--) {
+                var i = data.length;
+                while (i > 0) {
+                    i = i - 1;
                     that.pushMessage(data[i].username, data[i].text, new Date(data[i].time));
                 }
             }
