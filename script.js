@@ -4,15 +4,6 @@ var com;
 if (!com) {
     com = {};
 }
-(function () {
-    "use strict";
-
-    function Poller() {
-    }
-    var p = Poller.prototype;
-
-    com.Poller = Poller;
-}());
 
 (function () {
     "use strict";
