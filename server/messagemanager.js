@@ -20,6 +20,16 @@ if (!com) {
         });
     };
 
+    m.getLastMessages = function (callback) {
+        this.db.open(function (error, client) {
+            if (error) {
+                throw error;
+            }
+            var messages = new mongo.Collection(client, 'messages');
+            messages.find({}).sort({time: -1}).limit(10).toArray(callback);;
+        });
+    };
+
     com.MessageManager = MessageManager;
 }());
 

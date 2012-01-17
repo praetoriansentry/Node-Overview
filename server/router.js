@@ -13,11 +13,32 @@ if (!com) {
         DELETE:{}
     };
 
+    // curl -v  -X GET "http://10.0.1.16:8000/message/"
     routes.GET.message = function (request, response) {
         var m = new msg.MessageManager();
-        m.insertMessage('hello, world', 'john', function () {
+        m.getLastMessages(function (err, docs) {
             response.writeHead(200, {'Content-Type': 'text/plain'});
-            response.end('Get Message');
+            response.end(JSON.stringify(docs));
+        });
+    };
+
+    // curl -v  -X POST "http://10.0.1.16:8000/message/?username=praetoriansentry&message=testagain"
+    routes.POST.message = function (request, response) {
+        var m = new msg.MessageManager(),
+            query = require('url').parse(request.url, true).query;
+        if (typeof query === 'undefined'
+                || typeof query.username === 'undefined'
+                || typeof query.message === 'undefined'
+                || query.username === ''
+                || query.message === '') {
+            response.writeHead(405, 'Missing Required Parameters');
+            response.end();
+            return;
+        }
+
+        m.insertMessage(query.message, query.username, function () {
+            response.writeHead(200, {'Content-Type': 'text/plain'});
+            response.end();
         });
     };
 
