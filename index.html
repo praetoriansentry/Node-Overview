@@ -20,5 +20,13 @@
             </div>
             <textarea class='chatfont'></textarea>
         </div>
+        <script src="socket.io/socket.io.js"></script>
+        <script>
+            var socket = io.connect('http://10.0.1.16:8000');
+            socket.on('news', function (data) {
+                console.log(data);
+                socket.emit('my other event', { my: 'data' });
+            });
+        </script>
     </body>
 </html>
