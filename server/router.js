@@ -20,6 +20,7 @@ if (!com) {
         DELETE: {}
     };
 
+    // This is a simple method to fetch the last 10 messages
     // curl -v  -X GET "http://10.0.1.16:8000/message/"
     routes.GET.message = function (request, response) {
         var m = new msg.MessageManager();
@@ -29,6 +30,7 @@ if (!com) {
         });
     };
 
+    // If you post to the same url with a user name and messages as paramters, it will get inserted
     // curl -v  -X POST "http://10.0.1.16:8000/message/?username=praetoriansentry&message=testagain"
     routes.POST.message = function (request, response) {
         var m = new msg.MessageManager(),
@@ -58,6 +60,9 @@ if (!com) {
     var routes = com.routes,
         r;
 
+    /**
+     * This is just a super simple class to manage routing
+     */
     function Router(request, response) {
         this.request = request;
         this.response = response;
@@ -65,16 +70,25 @@ if (!com) {
 
     r = Router.prototype;
 
+    /**
+     * Default message
+     */
     r.showRoot = function () {
         this.response.writeHead(200, {'Content-Type': 'text/plain'});
         this.response.end('Demo Chat Server');
     };
 
+    /**
+     * 404
+     */
     r.sendNotFound = function () {
         this.response.writeHead(404, 'Not Found');
         this.response.end();
     };
 
+    /**
+     * Dispatch for the current route and respond
+     */
     r.dispatch = function () {
         var verb = this.request.method,
             pieces = this.parse(this.request.url),
