@@ -13,7 +13,7 @@ URL: http://code.google.com/p/html5slides/
 -->
 <html>
     <head>
-        <title>Scaling with Node.js</title>
+        <title>Real-Time Web Applications</title>
         <meta charset='utf-8'>
         <script src='http://html5slides.googlecode.com/svn/trunk/slides.js'></script>
         <style>
@@ -36,9 +36,7 @@ URL: http://code.google.com/p/html5slides/
 
         <article>
         <h1>
-            Scaling with Node.js
-            <br>
-            and Socket.io
+            Real-Time Web Apps with Node.js and Socket.io
         </h1>
         <p>
         <a href='http://jfh.me'>John Hilliard</a> - <a href='http://twitter.com/praetorian/'>@praetorian</a>
@@ -64,21 +62,11 @@ URL: http://code.google.com/p/html5slides/
         <article>
         <h3> Agenda </h3>
         <ul>
-            <li>
-            Introduction to Node.js
-            </li>
-            <li>
-            Client-Sever Communcation
-            </li>
-            <li>
-            Ajax Techniques
-            </li>
-            <li>
-            Node.js Performance
-            </li>
-            <li>
-            Demo / Code Walk Through
-            </li>
+            <li> Introduction to Node.js </li>
+            <li> Client-Sever Communcation </li>
+            <li> Ajax Techniques </li>
+            <li> Node.js Performance </li>
+            <li> Chat Application </li>
         </ul>
         <p>
             Follow along at <a href='http://jfh.me/470'>http://jfh.me/470</a>
@@ -146,22 +134,34 @@ URL: http://code.google.com/p/html5slides/
         <article>
         <h3>Socket.io</h3>
         <p>
-        Socket.io is a library that drastically simplifies the code needed to create real-time web applications that that cross-browser compatible.
+        Socket.io is a library that drastically simplifies the code needed to create real-time web applications that are cross-browser compatible.
         </p>
         <p>
-        It provides a simple interface that abstracts over many complicated transport mechanisms.
+        It provides a simplified interface that abstracts over many complicated transport mechanisms:
         </p>
+        <ul>
+            <li>WebSocket</li>
+            <li>Adobe Flash Socket</li>
+            <li>AJAX long polling</li>
+            <li>AJAX multipart streaming</li>
+            <li>Forever Iframe</li>
+            <li>JSONP Polling</li>
+        </ul>
         </article>
 
         <article>
         <h3> Client-Server Communication </h3>
         <p>
+        Creating a real time web application is all about the way the browser communicates with the server.
+        </p>
+        <p>
         The way browsers communicate with the server has evolved over time:
         </p>
         <ul>
             <li>Form POST</li>
-            <li>XHR</li>
-            <li>WebSocket / XHR Streaming</li>
+            <li>Ajax</li>
+            <li>XHR Streaming</li>
+            <li>WebSockets</li>
         </ul>
         </article>
 
@@ -190,12 +190,12 @@ URL: http://code.google.com/p/html5slides/
         </article>
 
         <article>
-        <h3> Ajax </h3>
+        <h3> Ajax - Method </h3>
 
-        <pre>
+        <pre style='margin-top: 25px;'>
 &lt;div id=&#39;ajaxform&#39;&gt;
     &lt;input name=&#39;val1&#39; type=&#39;text&#39;&gt;
-    &lt;button id=&#39;submitbtn&#39;&gt;Submit&lt;/button&gt;
+    &lt;button&gt;Submit&lt;/button&gt;
 &lt;/div&gt;
 &lt;script&gt;
 $(&#39;#ajaxform button&#39;).click(function (evt) {
@@ -216,24 +216,34 @@ $(&#39;#ajaxform button&#39;).click(function (evt) {
         <article>
         <h3> Ajax </h3>
 
-        <p>
-        Pros/cons
-        </p>
+        <ul>
+            <li><b>Pros</b></li>
+            <ul>
+                <li>Faster</li>
+                <li>Less overhead</li>
+                <li>More control over user experience</li>
+            </ul>
+            <li><b>Cons</b></li>
+            <ul>
+                <li>More complicated to implement</li>
+                <li>Requires (typically) some kind of library</li>
+            </ul>
+        </ul>
 
         </article>
 
 
         <article>
-        <h3> Sometimes Ajax isn't fast enough </h3>
+        <h3> Sometimes Ajax Isn't Enough </h3>
 
         <p>
-        how do we make applications that update in real time
+        How would we create real-time applications?
         </p>
         <ul>
-            <li>metrics/stocks</li>
-            <li>games</li>
-            <li>chat</li>
-            <li>server push</li>
+            <li>Chat</li>
+            <li>Multiplayer games</li>
+            <li>Stocks Ticker</li>
+            <li>Push notifications</li>
         </ul>
         </article>
 
@@ -258,30 +268,51 @@ $(&#39;#ajaxform button&#39;).click(function (evt) {
         <h3> Polling </h3>
 
         <p>
-        What is polling?
-        pros/cons
+        <img align="right" src='http://s3.amazonaws.com/praetoriansentry/jfhme/470/AjaxPolling.png'>
+        Use Ajax to check for new data at regular intervals.
+        <ul>
+            <li><b>Pros</b></li>
+            <ul>
+                <li>Simple to implement</li>
+                <li>Limits simultaneous connections</li>
+            </ul>
+            <li><b>Cons</b></li>
+            <ul>
+                <li>Lots of wasted bandwidth</li>
+                <li>Can feel slower</li>
+                <li>Problematic if server is overloaded</li>
+            </ul>
+        </ul>
         </p>
         </article>
 
         <article>
         <h3> Long Polling </h3>
-
         <p>
-        What is polling?
-        pros/cons
+        <img align="right" src='http://s3.amazonaws.com/praetoriansentry/jfhme/470/LongPolling.png'>
+        Leverage chunked encoding to avoid excessive messaging.
+        <ul>
+            <li><b>Pros</b></li>
+            <ul>
+                <li>Less wasted bandwidth</li>
+                <li>Feels faster</li>
+            </ul>
+            <li><b>Cons</b></li>
+            <ul>
+                <li>Results in many open connections</li>
+                <li>Harder to implement</li>
+            </ul>
+        </ul>
         </p>
 
         </article>
 
         <article>
-        <h3> Enter Node.js and Socket.io </h3>
+        <h3> Enter Node.js </h3>
+        <p>
+        Node.js is more optimized than Apache for handling many open requests.  This makes it ideal for real-time applications.
+        </p>
 
-        <dl>
-            <dt>Socket.io</dt>
-            <dd>Nice definition</dd>
-            <dt>Node.js</dt>
-            <dd>Nice Definition</dd>
-        </dl>
         </article>
 
         <article>
