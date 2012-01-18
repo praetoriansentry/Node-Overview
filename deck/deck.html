@@ -55,6 +55,7 @@ URL: http://code.google.com/p/html5slides/
             <li> MIT '09 </li>
             <li> 6-3 </li>
             <li> Doing web development since 2007 </li>
+            <li> Work for Next Jump</li>
             <li> Favorite Language: JavaScript </li>
         </ul>
         </article>
@@ -63,7 +64,7 @@ URL: http://code.google.com/p/html5slides/
         <h3> Agenda </h3>
         <ul>
             <li> Introduction to Node.js </li>
-            <li> Client-Sever Communcation </li>
+            <li> Client-Sever Communication </li>
             <li> Ajax Techniques </li>
             <li> Node.js Performance </li>
             <li> Chat Application </li>
@@ -116,13 +117,13 @@ URL: http://code.google.com/p/html5slides/
                     <td>Read 1 MB sequentially from memory</td><td>250,000 ns</td>
                 </tr>
                 <tr>
-                    <td>Round trip within same datacenter</td><td>500,000 ns</td>
+                    <td>Round trip within same data center</td><td>500,000 ns</td>
                 </tr>
                 <tr>
                     <td>Read 1 MB sequentially from disk</td><td>20,000,000 ns</td>
                 </tr>
                 <tr>
-                    <td>Send packet CA->Netherlands->CA</td><td>150,000,000 ns</td>
+                    <td>Send packet CA -&gt; Netherlands -&gt; CA</td><td>150,000,000 ns</td>
                 </tr>
             </tbody>
         </table>
@@ -242,7 +243,7 @@ $(&#39;#ajaxform button&#39;).click(function (evt) {
         <ul>
             <li>Chat</li>
             <li>Multiplayer games</li>
-            <li>Stocks Ticker</li>
+            <li>Stock Ticker</li>
             <li>Push notifications</li>
         </ul>
         </article>
@@ -354,7 +355,7 @@ $(&#39;#ajaxform button&#39;).click(function (evt) {
             <li>Real-time web applications benefit from open connections</li>
             <li>Not all servers handle simultaneous connections gracefully</li>
             <li>Node.js is optimized for this use case</li>
-            <li>Socket.io provides a simple inteface for various transport mechanisms</li>
+            <li>Socket.io provides a simple interface for various transport mechanisms</li>
         </ul>
 
         </article>
@@ -387,13 +388,16 @@ http.createServer(function (request, response) {
 
         <ul>
             <li>Scalability is important for real-time applications</li>
+            <li>Not all servers handle connections the same way</li>
             <li>JavaScript is fun</li>
         </ul>
 
+        <p>
+        All the code, slides, benchmarks are available on <a href='https://github.com/praetoriansentry/Node-Overview'>github</a>
+        </p>
+
 
         </article>
-
         </section>
-
     </body>
 </html>
