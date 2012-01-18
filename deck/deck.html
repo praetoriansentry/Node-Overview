@@ -309,29 +309,56 @@ $(&#39;#ajaxform button&#39;).click(function (evt) {
 
         <article>
         <h3> Enter Node.js </h3>
+
         <p>
-        Node.js is more optimized than Apache for handling many open requests.  This makes it ideal for real-time applications.
+        Node.js is optimized for handling many open requests.  This makes it ideal for real-time applications.
         </p>
 
+        <ul>
+            <li><b>Node.js</b></li>
+            <ul>
+                <li>Optimized to handle many open connections</li>
+                <li>Uses one process</li>
+                <li>Might be slower under low load</li>
+            </ul>
+            <li><b>Apache</b></li>
+            <ul>
+                <li>Optimized to open and close connections as fast as possible</li>
+                <li>Creates a new process for each connection&dagger;</li>
+                <li>Fast for light traffic</li>
+            </ul>
+        </ul>
+
+        <p><small>&dagger; Can use threads with thread safe libraries</small></p>
+
+        </article>
+
+        <article class='fill current'>
+        <h3> Node.js and Apache - Log scale</h3>
+        <p>
+        <a href='http://s3.amazonaws.com/praetoriansentry/jfhme/470/combined.png'><img width='100%' src='http://s3.amazonaws.com/praetoriansentry/jfhme/470/combined.png'></a>
+        </p>
+        </article>
+
+        <article class='fill current'>
+        <h3> Node.js and Apache - Zoomed In </h3>
+        <p>
+        <a href='http://s3.amazonaws.com/praetoriansentry/jfhme/470/chopped.png'><img width='100%' src='http://s3.amazonaws.com/praetoriansentry/jfhme/470/chopped.png'></a>
+        </p>
         </article>
 
         <article>
-        <h3> Socket.io </h3>
+        <h3> Pause / Recap </h3>
 
-        <p>
-        Full description
-        </p>
-
-        </article>
-
-        <article>
-        <h3> Node.js </h3>
-
-        <p>
-        Full description
-        </p>
+        <ul>
+            <li>Real-time web applications benefit from open connections</li>
+            <li>Not all servers handle simultaneous connections gracefully</li>
+            <li>Node.js is optimized for this use case</li>
+            <li>Socket.io provides a simple inteface for various transport mechanisms</li>
+        </ul>
 
         </article>
+
 
         <article>
         <h3> Node.js - Hello World </h3>
@@ -346,31 +373,11 @@ http.createServer(function (request, response) {
 
         </article>
 
-        <article>
-        <h3> Node.js - Why Scalability Matters </h3>
-
-        <p>
-        Show benchmarks
-        </p>
-
-        </article>
-
-        <article>
-        <h3> Node.js - How is Node.js scalable </h3>
-
-        <p>
-        not process thread based/ event based -  less over head
-        <br>
-        not asynchronous i/o
-        </p>
-
-        </article>
-
-        <article>
+        <article class='fill current'>
         <h3> Chat Demo </h3>
 
         <p>
-        screen shot
+        <img src='http://s3.amazonaws.com/praetoriansentry/jfhme/470/chat.png'>
         </p>
 
         </article>
@@ -378,9 +385,11 @@ http.createServer(function (request, response) {
         <article>
         <h3> Final Thoughts</h3>
 
-        <p>
-        stuff.
-        </p>
+        <ul>
+            <li>Scalability is important for real-time applications</li>
+            <li>JavaScript is fun</li>
+        </ul>
+
 
         </article>
 
