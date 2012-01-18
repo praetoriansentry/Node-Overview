@@ -6,11 +6,17 @@ if (!com) {
 }
 (function () {
     "use strict";
+    /**
+     * The point of this class is to provide a simple interface for working with mongo db
+     */
     function MessageManager() {
         this.db = new mongo.Db('chat', new mongo.Server("127.0.0.1", 27017, {}));
     }
     var m = MessageManager.prototype;
 
+    /**
+     * This will save the given information to the db
+     */
     m.insertMessage = function (text, username, callback) {
         this.db.open(function (error, client) {
             if (error) {
@@ -21,6 +27,9 @@ if (!com) {
         });
     };
 
+    /**
+     * This will fetch the last 10 messages from the database
+     */
     m.getLastMessages = function (callback) {
         this.db.open(function (error, client) {
             if (error) {

@@ -7,6 +7,12 @@ if (!com) {
 
 (function () {
     "use strict";
+
+    /**
+     * The point of this object is just to store functions for the various
+     * request that the server might get.  It seems like a decent enough way
+     * to manage a small number of different request types
+     */
     var routes = {
         GET: {},
         POST: {},
