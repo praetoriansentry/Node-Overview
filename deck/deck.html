@@ -27,6 +27,9 @@ URL: http://code.google.com/p/html5slides/
             a {
                 text-decoration: none;
             }
+            li.nested::before {
+                content: '';
+            }
         </style>
     </head>
     <body style='display: none'>
@@ -77,7 +80,7 @@ URL: http://code.google.com/p/html5slides/
         <article>
         <h3>Node.js</h3>
         <p>
-        <img class='centered' src='http://s3.amazonaws.com/praetoriansentry/jfhme/470/nodejs.png'>
+        <img class='centered' src='http://s3.amazonaws.com/praetoriansentry/jfhme/470/nodejs.png' alt='Node Logo'>
         Node.js is a JavaScript based platform which facilitates building scalable network applications.
         <br>
         Some of the notable features are:
@@ -177,15 +180,18 @@ URL: http://code.google.com/p/html5slides/
 &lt;/form&gt;</pre>
         <ul>
             <li><b>Pros</b></li>
+            <li class='nested'>
             <ul>
                 <li>Completely HTML based. No JavaScript Required</li>
                 <li>Dead Simple</li>
             </ul>
             <li><b>Cons</b></li>
+            <li class='nested'>
             <ul>
                 <li>Page Refreshes - Jumpy UX</li>
                 <li>Feels much slower</li>
             </ul>
+            </li>
         </ul>
 
         </article>
@@ -219,16 +225,20 @@ $(&#39;#ajaxform button&#39;).click(function (evt) {
 
         <ul>
             <li><b>Pros</b></li>
+            <li class='nested'>
             <ul>
                 <li>Faster</li>
                 <li>Less overhead</li>
                 <li>More control over user experience</li>
             </ul>
+            </li>
             <li><b>Cons</b></li>
+            <li class='nested'>
             <ul>
                 <li>More complicated to implement</li>
                 <li>Requires (typically) some kind of library</li>
             </ul>
+            </li>
         </ul>
 
         </article>
@@ -269,42 +279,51 @@ $(&#39;#ajaxform button&#39;).click(function (evt) {
         <h3> Polling </h3>
 
         <p>
-        <img align="right" src='http://s3.amazonaws.com/praetoriansentry/jfhme/470/AjaxPolling.png'>
+        <img style='float: right; vertical-align: top;' src='http://s3.amazonaws.com/praetoriansentry/jfhme/470/AjaxPolling.png' alt='Long Polling Diagram'>
         Use Ajax to check for new data at regular intervals.
+        </p>
+
         <ul>
             <li><b>Pros</b></li>
+            <li class='nested'>
             <ul>
                 <li>Simple to implement</li>
                 <li>Limits simultaneous connections</li>
             </ul>
+            </li>
             <li><b>Cons</b></li>
+            <li class='nested'>
             <ul>
                 <li>Lots of wasted bandwidth</li>
                 <li>Can feel slower</li>
                 <li>Problematic if server is overloaded</li>
             </ul>
+            </li>
         </ul>
-        </p>
         </article>
 
         <article>
         <h3> Long Polling </h3>
         <p>
-        <img align="right" src='http://s3.amazonaws.com/praetoriansentry/jfhme/470/LongPolling.png'>
+        <img style='float: right; vertical-align: top;' src='http://s3.amazonaws.com/praetoriansentry/jfhme/470/LongPolling.png' alt='Long Polling Diagram'>
         Leverage chunked encoding to avoid excessive messaging.
+        </p>
         <ul>
             <li><b>Pros</b></li>
+            <li class='nested'>
             <ul>
                 <li>Less wasted bandwidth</li>
                 <li>Feels faster</li>
             </ul>
+            </li>
             <li><b>Cons</b></li>
+            <li class='nested'>
             <ul>
                 <li>Results in many open connections</li>
                 <li>Harder to implement</li>
             </ul>
+            </li>
         </ul>
-        </p>
 
         </article>
 
@@ -317,17 +336,21 @@ $(&#39;#ajaxform button&#39;).click(function (evt) {
 
         <ul>
             <li><b>Node.js</b></li>
+            <li class='nested'>
             <ul>
                 <li>Optimized to handle many open connections</li>
                 <li>Uses one process</li>
                 <li>Might be slower under low load</li>
             </ul>
+            </li>
             <li><b>Apache</b></li>
+            <li class='nested'>
             <ul>
                 <li>Optimized to open and close connections as fast as possible</li>
                 <li>Creates a new process for each connection&dagger;</li>
                 <li>Fast for light traffic</li>
             </ul>
+            </li>
         </ul>
 
         <p><small>&dagger; Can use threads with thread safe libraries</small></p>
@@ -337,14 +360,14 @@ $(&#39;#ajaxform button&#39;).click(function (evt) {
         <article class='fill current'>
         <h3> Node.js and Apache - Log scale</h3>
         <p>
-        <a href='http://s3.amazonaws.com/praetoriansentry/jfhme/470/combined.png'><img width='100%' src='http://s3.amazonaws.com/praetoriansentry/jfhme/470/combined.png'></a>
+        <a href='http://s3.amazonaws.com/praetoriansentry/jfhme/470/combined.png'><img style='width: 100%' src='http://s3.amazonaws.com/praetoriansentry/jfhme/470/combined.png' alt='Benchmark'></a>
         </p>
         </article>
 
         <article class='fill current'>
         <h3> Node.js and Apache - Zoomed In </h3>
         <p>
-        <a href='http://s3.amazonaws.com/praetoriansentry/jfhme/470/chopped.png'><img width='100%' src='http://s3.amazonaws.com/praetoriansentry/jfhme/470/chopped.png'></a>
+        <a href='http://s3.amazonaws.com/praetoriansentry/jfhme/470/chopped.png'><img style='width: 100%' src='http://s3.amazonaws.com/praetoriansentry/jfhme/470/chopped.png' alt='Benchmark Zoomed'></a>
         </p>
         </article>
 
@@ -378,7 +401,7 @@ http.createServer(function (request, response) {
         <h3> Chat Demo </h3>
 
         <p>
-        <img src='http://s3.amazonaws.com/praetoriansentry/jfhme/470/chat.png'>
+        <img src='http://s3.amazonaws.com/praetoriansentry/jfhme/470/chat.png' alt='Chat Screen Shot'>
         </p>
 
         </article>
