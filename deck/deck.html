@@ -18,7 +18,7 @@ URL: http://code.google.com/p/html5slides/
         <script src='http://html5slides.googlecode.com/svn/trunk/slides.js'></script>
         <style>
             #nxjdeck.slides.template-default > article:not(.nobackground):not(.biglogo) {
-                background: url(http://s3.amazonaws.com/praetoriansentry/jfhme/nxjlogo.png) 710px 625px no-repeat;
+                background: url(http://s3.amazonaws.com/praetoriansentry/jfhme/470/nxjlogo.png) 710px 625px no-repeat;
                 background-color: white;
             }
             dt {
@@ -65,13 +65,16 @@ URL: http://code.google.com/p/html5slides/
         <h3> Agenda </h3>
         <ul>
             <li>
+            Introduction to Node.js
+            </li>
+            <li>
             Client-Sever Communcation
             </li>
             <li>
             Ajax Techniques
             </li>
             <li>
-            Node.js and Socket
+            Node.js Performance
             </li>
             <li>
             Demo / Code Walk Through
@@ -79,6 +82,74 @@ URL: http://code.google.com/p/html5slides/
         </ul>
         <p>
             Follow along at <a href='http://jfh.me/470'>http://jfh.me/470</a>
+        </p>
+        </article>
+
+        <article>
+        <h3>Node.js</h3>
+        <p>
+        <img class='centered' src='http://s3.amazonaws.com/praetoriansentry/jfhme/470/nodejs.png'>
+        Node.js is a JavaScript based platform which facilitates building scalable network applications.
+        <br>
+        Some of the notable features are:
+        </p>
+        <ul>
+            <li>Light-weight</li>
+            <li>Event Driven / non-blocking I/O</li>
+            <li>Single thread / process</li>
+            <li>Server-side JavaScript</li>
+        </ul>
+        </article>
+
+        <article class='smaller'>
+        <h3>What does it mean...</h3>
+        <p>
+        Node.js makes it much simpler to create applications and services that scale well under high load.
+        </p>
+        <p>
+        I/O is typically orders of magnitude slower than the amount of processing time needed to render a page.
+        Since I/O is asynchronous in Node.js, the process rarely ever blocks and we can avoid the overhead and complexity of multiple threads.
+        </p>
+        <table>
+            <tbody>
+                <tr>
+                    <td>L1 cache reference</td><td>0.5 ns</td>
+                </tr>
+                <tr>
+                    <td>L2 cache reference</td><td>7 ns</td>
+                </tr>
+                <tr>
+                    <td>Main memory reference</td><td>100 ns</td>
+                </tr>
+                <tr>
+                    <td>Send 2K bytes over 1 Gbps network</td><td>20,000 ns</td>
+                </tr>
+                <tr>
+                    <td>Read 1 MB sequentially from memory</td><td>250,000 ns</td>
+                </tr>
+                <tr>
+                    <td>Round trip within same datacenter</td><td>500,000 ns</td>
+                </tr>
+                <tr>
+                    <td>Read 1 MB sequentially from disk</td><td>20,000,000 ns</td>
+                </tr>
+                <tr>
+                    <td>Send packet CA->Netherlands->CA</td><td>150,000,000 ns</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+        <small>Source: <a href='http://www.cs.cornell.edu/projects/ladis2009/talks/dean-keynote-ladis2009.pdf'>Numbers everyone should know</a></small>
+        </p>
+        </article>
+
+        <article>
+        <h3>Socket.io</h3>
+        <p>
+        Socket.io is a library that drastically simplifies the code needed to create real-time web applications that that cross-browser compatible.
+        </p>
+        <p>
+        It provides a simple interface that abstracts over many complicated transport mechanisms.
         </p>
         </article>
 
